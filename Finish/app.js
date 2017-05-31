@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -7,16 +6,17 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var passport = require('passport');
+var mongoose = require('mongoose');                         //add for Mongo support
 //// Initialize Passport
 var initPassport = require('./passport-init');
 initPassport(passport);
-var mongoose = require('mongoose');                         //add for Mongo support
-mongoose.connect('mongodb://localhost/test-chirp');     
+
+mongoose.connect('mongodb://localhost/test-chirp');
+
+var app = express();
 
 var api = require('./routes/api');
 var authenticate = require('./routes/authenticate')(passport);
-
-var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -68,7 +68,7 @@ var initPassport = require('./passport-init');
 initPassport(passport);
 
 module.exports = app;
-=======
+
 //app.js for Node.js server
 var express = require('express');
 var app = express();
@@ -82,4 +82,3 @@ app.get('*', function(req, res) {
 app.listen(port, function() {
     console.log('Listening on ' + port);
 });
->>>>>>> dce15c9a93976bd074c052bbb52672bcd603efe2
